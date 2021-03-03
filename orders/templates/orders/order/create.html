@@ -1,0 +1,40 @@
+{% extends "shop/base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  {% trans "مراحل پایانی خرید | سبد خرید و پرداخن" %}
+{% endblock %}
+
+{% block content %}
+  <p class="text-info my-4">{% trans "مشخصات خود را بدرستی وارد نمایید" %}</p>
+
+  <div class="order-info">
+    <h3>{% trans "سبد خرید نهایی شما" %}</h3>
+    <ul>
+      {% for item in cart %}
+        <li>
+          {{ item.quantity }}  {{ item.product.name }}عدد
+          <span>تومان{{ item.total_price|floatformat:0 }}</span>
+        </li>
+      {% endfor %}
+      {% if cart.coupon %}
+        <li>
+          {% blocktrans with code=cart.coupon.code discount=cart.coupon.discount %}
+            "{{ code }}" ({{ discount }}% off)
+          {% endblocktrans %}
+          <span class="neg">- {{ cart.get_discount|floatformat:0 }}</span>
+        </li>
+      {% endif %}
+    </ul>
+    <p>{% trans "جمع کل" %}: تومان{{ cart.get_total_price_after_discount|floatformat:0 }}</p>
+  </div>
+<div class="text-right" style="direction:rtl;">
+     <form method="post" action="#"  class="order-form" class="text-right" >
+    {{ form|crispy }}
+    <p><input type="submit" value="{% trans 'پرداخت' %}"></p>
+    {% csrf_token %}
+  </form>
+</div>
+ 
+{% endblock %}

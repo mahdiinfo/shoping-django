@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوازم پزشکی  اصفهان | زرین طب باستان | پزشکی اصفهان</title>
+    <!--search engines description (must be dynamic)-->
+    <meta name="description" content="توضیحات فروشگاه اینترنتی">
+    <link rel="stylesheet" href="{% static 'css/styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles/flickity.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles/font-awesome.min.css' %}">
+    
+    <script src="https://kit.fontawesome.com/a27e5077f7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--start Header-->
+    <header id="header">
+        <div id="contact_info">
+            <div id="left">
+                <!--support number-->
+                <a href="tel: 09131696378">
+                    <span id="number"><i class="fa fa-phone" aria-hidden="true"></i> 09131696378 تماس با پشتیبانی</span>
+                </a>
+            </div>
+            <div id="center">
+                <!--site title-->
+            <h1>زرین طب <span>باستان </span> <img src="{% static 'images/logo.png' %}" width="68px" alt=""></h1>
+               
+            </div>
+            <div id="right">
+                <ul>
+                    <!--social networks-->
+                    <a href="#instagram"><li class="fa fa-instagram" aria-hidden="true"></li></a>
+                    <a href="#telegram"><li class="fa fa-telegram" aria-hidden="true"></li></a>
+                    <a href="#facebook"><li class="fa fa-facebook-square" aria-hidden="true"></li></a>
+                    <a href="#twitter"><li class="fa fa-twitter" aria-hidden="true"></li></a>
+                    <a href="#email"><li class="fa fa-envelope" aria-hidden="true"></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="clr"></div>
+        <div id="second_row">
+            <!--search box start-->
+            <div id="search_box">
+                <form class="searchForm-head" id="searchform" action="{% url 'shop:searchnew' %}" method="get">
+                    <div id="input">
+                    <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content="Press enter to search" class="search__field" placeholder="چیزی وارد کنید ..." value="" style="" data-original-title="" title="" autofocus="autofocus">   
+                      <!-- <button type="button" onclick="searchform.submit()" class="btnSeaech search__btn"></button> -->
+                      <input type="submit" onclick="searchform.submit()" value="">
+                    </div>
+                    </form>
+            </div>
+            <!--/search box end-->
+            <div id="details">
+                <ul> 
+                    <li id="basket">
+                        <!--basket-->
+                        <div class="fa fa-shopping-cart icon"></div>
+                        <div class="title">سبد خرید
+                            {% with total_items=cart|length %}
+                            {% if total_items > 0 %}
+                            <span id="count">
+                            <a href="{% url 'cart:cart_detail' %}">{{ total_items }}</a>
+                            </span>
+                            {% endif %}
+                            {% endwith %}
+                        </div>
+                    </li>
+                    <li id="user_area">
+                        <!--login/signup area-->
+                        <div class="fa fa-user icon"></div>
+                        <div class="title"><a class="js-open-modal btn" href="">ورود / ثبت نام</a></div>
+                    </li>
+                </ul>
+            </div>
+            <!--the login/signup popup-->
+            <div id="popup1" class="modal-box">
+                <header> <a href="" class="js-modal-close close">×</a>
+                  <h3>ورود یا عضویت</h3>
+                </header>
+                <div class="modal-body">
+                    <!--form must be here-->
+
+                </div>
+              </div>
+              
+        </div>
+        <div class="clr"></div>
+        <nav id="top_navi">
+            <div id="mnu-btn" class="fa fa-bars"></div>
+            <ul>
+                <!--navigation menu-->
+                 <li ><a href="">سرچ قوی</a>
+                <li><a href="{% url 'shop:product_list' %}">صفحه ی نخست</a></li>
+                <li><a href="{% url 'shop:about-page' %}">درباره ی ما</a></li>
+                <li><a href="#">تماس با ما</a></li>
+                <li class="have-child"><a href="#">دسته بندی محصولات</a>
+                
+                
+                <!--the menu can unlimited child-->
+                <!--start child-->
+                <ul>
+                    {% for c in categories %}
+                    <li {% if category.slug == c.slug %} {% endif %}>
+                    
+                        <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                    </li>
+                        
+                  
+                    {% endfor %}
+                </ul>
+              
+                  </li>
+                  
+                   
+                  
+                  
+                <!--/end child-->
+                </li>
+                <li class="have-child"><a href="{% url 'shop:product_list' %}">همه محصولات</a></li>
+            </ul>
+        </nav>
+        <div class="clr"></div>
+    </header>
+    <!--/end Header-->
+    <div class="clr"></div>

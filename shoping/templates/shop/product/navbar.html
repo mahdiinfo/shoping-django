@@ -1,0 +1,40 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top " style="background-color: #DC7633;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">دائري</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="تبديل التنقل">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="container">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item active">
+                      <a class="nav-link" aria-current="page" href="#">الصفحة الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">حلقة الوصل</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">معاق</a>
+                    </li>
+                  </ul>
+            </div>
+         <div class="p-1 mx-auto text-white">
+            {% with total_items=cart|length %}
+            {% if total_items > 0 %}
+                سبد شما:
+                <a class="simpleCart_empty"  href="{% url 'cart:cart_detail' %}">
+                {{ total_items }}{{ total_items|pluralize }},
+                تومان{{ cart.get_total_price }}
+                </a>
+            {% else %}
+            سبد شما خالی
+            {% endif %}
+            {% endwith %}
+          <i class="fas fa-shopping-cart text-white"></i>
+         </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  

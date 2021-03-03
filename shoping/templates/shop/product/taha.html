@@ -1,0 +1,245 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>لوازم پزشکی امیر</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+
+<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+
+<link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'><link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Fascinate' rel='stylesheet' type='text/css'>
+
+<link href="{% static 'css/animate.min.css' %}" rel="stylesheet"> 
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="https://kit.fontawesome.com/a27e5077f7.js" crossorigin="anonymous"></script>
+
+	<script>
+	 new WOW().init();
+	</script>
+	<style>
+		body
+		{
+			background-color:#F8F9F9;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="header">
+		<div class="top-header navbar navbar-default">
+			<div class="container">
+				<div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
+					<p> <a href="register.html">ثبت نام </a> یا <a href="signin.html">ورود </a></p>
+				</div>
+			</div>
+		</div>
+		<div class="header-two navbar navbar-default">
+			<div class="container">
+				<div class="nav navbar-nav header-two-left">
+					<ul>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+60 1-2345 6789</li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@babytime.com">ami@gmail.com</a></li>			
+					</ul>
+				</div>
+				<div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
+					<h1><a href="#">لوازم پزشکی <b>امیر</b></a></h1>
+				</div>
+				<div class="nav navbar-nav navbar-right header-two-right">
+					<div class="header-right my-account">
+						<div class="btn-group">
+
+							<button class="btn border btn-lg dropdown-toggle my-md-4 my-2 bg-success" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">دسته بندی</button>
+							<div class="dropdown-menu bg-success text-center">
+	
+								{% for c in categories %}
+								<li class="bg-dark" {% if category.slug == c.slug %}class="selected" {% endif %}>
+									<a class="text-dark bg-dark text-center"  href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+								</li>
+	
+								{% endfor %}
+							</div>
+	
+						</div>			
+					</div>
+					<div class="header-right cart">
+						<a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+						<h4><a href="checkout.html">
+								
+						</a></h4>
+						<div class="cart-box">
+							
+							{% with total_items=cart|length %}
+								{% if total_items > 0 %}
+									سبد شما:
+									<a class="simpleCart_empty"  href="{% url 'cart:cart_detail' %}">
+									{{ total_items }}{{ total_items|pluralize }},
+									تومان{{ cart.get_total_price }}
+									</a>
+								{% else %}
+								سبد شما خالی
+								{% endif %}
+								{% endwith %}
+							<div class="clearfix"> </div>
+							
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="top-nav navbar navbar-default">
+		
+			<div class="container">
+				<nav class="navbar" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav top-nav-info">
+							<li><a href="index.html" class="active"><b>Home</b></a></li>
+							<li>
+								<a href="products.html"><b>Baby</b></a>
+							</li>
+							<li>
+								<a href="products.html"><b>Kids</b></a>
+							</li>
+							<li>
+								<a href="products.html"><b>Accessories</b></a>
+							</li>				
+							<li>
+								<a class="" href="{% url 'shop:product_list' %}">همه محصولات</a>
+							</li>
+						</ul> 
+						<div class="clearfix"> </div>
+						<header class="cd-main-header">
+							<ul class="cd-header-buttons">
+								<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+							</ul>
+						</header>
+					</div>
+				</nav>
+				<div id="cd-search" class="cd-search">
+					<form class="searchForm-head" id="searchform" action="{% url 'shop:searchnew' %}" method="get">
+						<input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content="Press enter to search" class="search__field" placeholder="Search..." value="" style="" data-original-title="" title="" autofocus="autofocus">                            <button type="button" onclick="searchform.submit()" class="btnSeaech search__btn">Search</button>
+						</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="banner">
+		<div class="container">
+			<div class="banner-text">
+				<div class="col-sm-7 banner-right wow fadeInRight animated" data-wow-delay=".5s"></div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<div class="new">
+		<div class="container">
+			<div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+				<h3 class="title">فروشگاه تجهیزات پزشکی و درمانی <span>زرین طب باستان</span></h3>
+			</div>
+			<div class="new-info">
+                {% for product in products %}
+				<div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s">
+					<div class="new-top">
+						<a href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="img-responsive"/></a>
+						<div class="new-text">
+							<ul>
+                                <li> 
+                                    <form  class="item_add" action="{% url 'cart:cart_add' product.id %}" method="post">
+                                        {{ cart_product_form }}
+                                        {% csrf_token %}
+                                        <input class="item_add" type="submit" value="خرید">
+                                      </form>
+
+                                </a></li>
+                                
+								<li><a href="{{ product.get_absolute_url }}">مشاهده بیشتر </a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="new-bottom">
+						<h5><a class="name" href="{{ product.get_absolute_url }}">{{ product.name }} </a></h5>	
+						<div class="ofr">
+							<p><span class="item_price">{{product.price}}</span></p>
+						</div>
+					</div>
+				</div>
+				
+				
+                {% endfor %}
+                <div class="clearfix"> </div>
+           
+			</div>
+		</div>
+	</div>
+
+	<div class="gallery">
+		<div class="container">
+			<div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
+				<h3 class="title">لوازم مصرفی<span> پزشکی</span></h3>
+			</div>
+			<div class="gallery-info">
+            {% for product in products %}
+				<div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s">
+					<a href="{{ product.get_absolute_url }}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="img-responsive" alt=""/></a>
+					<div class="gallery-text simpleCart_shelfItem">
+						<h5><a class="name" href="{{ product.get_absolute_url }}">{{ product.name }} </a></h5>
+						<p><span class="item_price">{{product.price}}</span></p>
+						<h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a href="#">xl</a> </h4>
+					</div>
+				</div>								
+						{% endfor %}	
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="footer-info">
+				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
+					<h4 class="footer-logo"><a href="index.html"> زرین طب باستان<b></b></a></h4>
+					<p>2017 © Baby Time. All rights reserved | Design by HELP University</p>
+				</div>
+				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
+					<p>مارا در شبکه های اجتماعی دنبال کنید</p>
+					<ul>
+						<li><a href="#"><i class="fab fa-whatsapp fa-2x"></i></a></li>
+						<li><a href="#"><i class="fab fa-telegram fa-2x"></i></a></li>
+						<li><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">
+					<h3>مارا دنبال کنید</h3>
+					<p>ایمیل خود را برای ما ارسال کنید تا از تخفیفات ما با خبر شوید</p>
+					<form>
+						<input type="text" placeholder="ایمیل خود را وارد کنید" required="">
+						<input type="submit" value="ارسال">
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>

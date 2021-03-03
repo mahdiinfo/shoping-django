@@ -1,0 +1,72 @@
+{% load static %}
+        <!--footer-->
+        <footer id="footer">
+            <div id="boxes">
+                <!--first-->
+                <div class="box">
+                    <h3>دسترسی سریع</h3>
+                    <div class="content">
+                        <ul>
+                            <li><a href="#">تجهیزات پزشکی</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--second-->
+                <div class="box">
+                    <h3>تاییدیه و مجوزها</h3>
+                    <div class="content">
+                        <img src="images/nam.png" alt="">
+                    </div>
+                </div>
+                <!--third-->
+                <div class="box">
+                    <h3>تماس با ما</h3>
+                    <div class="content">
+                        <p>آدرس : اصفهان - خیابان شیخ بهایی</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
+            <!--copyright-->
+            <p id="copyright">کلیه ی حقوق این وبسایت محفوظ می باشد و هرگونه کپی برداری از آن شرعا و قانونا غیرمجاز است.</p>
+        </footer>
+        <!--whatsapp widget-->
+        <div id="whatsapp_support" class="fa fa-whatsapp">
+            <a href="https://web.whatsapp.com/send?phone=09131696378&text=سلام"><div id="title">پشتیبانی واتساپ</div>
+            </a>
+        </div>
+    <!--load Scripts-->
+    <script src="{% static 'js/scripts/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/scripts/flickity.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scripts/scripts.js' %}"></script>
+    <script>
+        //slider initialize
+        $(document).ready(function(){
+            $('.gallery').flickity({
+                cellAlign: 'right',
+                contain: true,
+                prevNextButtons: false,
+                imagesLoaded: true,
+                autoPlay: true
+            });
+        });
+        //items initialize
+        if($(window).width() >= 600){
+            $('.tj_ticket').flickity({
+            rightToLeft: true,
+            freeScroll: true,
+            contain: true,
+            pageDots: false,
+            freeScrollFriction: 0.2,
+            cellAlign: 'right',
+            imagesLoaded: true
+        });
+        }else{
+            $(".tj_ticket").addClass("toScroll");
+            $(".tj_ticket .tj_single").addClass("toScroller");
+        }
+    </script>
+    <div id="overlay"></div>
+</body>
+
+</html>

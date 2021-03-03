@@ -1,0 +1,334 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محصول من</title>
+    <!--search engines description (must be dynamic)-->
+    <meta name="description" content="توضیحات محصول">
+    <link rel="stylesheet" href="{% static 'css/styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles/flickity.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles/responsive.css' %}">
+    <script src="https://kit.fontawesome.com/a27e5077f7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--start Header-->
+    <header id="header">
+        <div id="contact_info">
+            <div id="left">
+                <!--support number-->
+                <a href="tel:09123456789">
+                    <span id="number"><i class="fa fa-phone" aria-hidden="true"></i> تماس با پشتیبانی : 02134567</span>
+                </a>
+            </div>
+            <div id="center">
+                <!--product title-->
+              <h1>زرین طب <span>باستان </span> <img src="{% static 'images/logo.png' %}" width="68px" alt=""></h1>
+            </div>
+            <div id="right">
+                <ul>
+                    <!--social networks-->
+                    <a href="#instagram"><li class="fa fa-instagram" aria-hidden="true"></li></a>
+                    <a href="#telegram"><li class="fa fa-telegram" aria-hidden="true"></li></a>
+                    <a href="#facebook"><li class="fa fa-facebook-square" aria-hidden="true"></li></a>
+                    <a href="#twitter"><li class="fa fa-twitter" aria-hidden="true"></li></a>
+                    <a href="#email"><li class="fa fa-envelope" aria-hidden="true"></li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="clr"></div>
+        <div id="second_row">
+            <!--search box start-->
+           <div id="search_box">
+                <form class="searchForm-head" id="searchform" action="" method="get">
+                    <div id="input">
+                    <input type="text" name="q" data-toggle="popover" data-placement="bottom" data-content="Press enter to search" class="search__field" placeholder="چیزی وارد کنید ..." value="" style="" data-original-title="" title="" autofocus="autofocus">   
+                      <!-- <button type="button" onclick="searchform.submit()" class="btnSeaech search__btn"></button> -->
+                      <input type="submit" onclick="searchform.submit()" value="">
+                    </div>
+                    </form>
+            </div>
+            <!--/search box end-->
+             <div id="details">
+                <ul> 
+                    <li id="basket">
+                        <!--basket-->
+                        <div class="fa fa-shopping-cart icon"></div>
+                        <div class="title">سبد خرید
+                            <span id="count">
+                            {% with total_items=cart|length %}
+                            {% if total_items > 0 %}
+                                <a href="{% url 'cart:cart_detail' %}">
+                                {{ total_items }}
+                                </a>
+                            {% else %}
+                            سبد شما خالی
+                            {% endif %}
+                            {% endwith %}
+                            </span>
+                        </div>
+                    </li>
+                    <li id="user_area">
+                        <!--login/signup area-->
+                        <div class="fa fa-user icon"></div>
+                        <div class="title"><a class="js-open-modal btn" href="">ورود / ثبت نام</a></div>
+                    </li>
+                </ul>
+            </div>
+            <!--the login/signup popup-->
+            <div id="popup1" class="modal-box">
+                <header> <a href="" class="js-modal-close close">×</a>
+                  <h3>ورود یا عضویت</h3>
+                </header>
+                <div class="modal-body">
+                    <!--form must be here-->
+
+                </div>
+              </div>
+        </div>
+        <div class="clr"></div>
+        <nav id="top_navi">
+            <ul>
+                <!--navigation menu-->
+                <li><a href="{% url 'shop:product_list' %}">خانه</a></li>
+                <li><a href="#">تماس با ما</a>
+                <!--the menu can unlimited child-->
+                <!--start child-->
+                <ul>
+                    <li><a href="#">زیر منو</a></li>
+                    <li><a href="#">زیر منوی 2</a>
+                        <ul>
+                            <li><a href="#">زیر منو</a></li>
+                            <li><a href="#">زیر منوی 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--/end child-->
+                </li>
+            </ul>
+        </nav>
+        <div class="clr"></div>
+    </header>
+    <!--/end Header-->
+    <div class="clr"></div>
+    <div id="contain">
+        <!--start navigation-->
+        <nav id="route_nav">
+            <ul>
+                <li><a href="{% url 'shop:product_list' %}">خانه</a></li>
+                <li class="before"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></li>
+                <li class="before"><a href="{{ product.subcategory.get_absolute_url }}">{{ product.subcategory }}</a></li>
+              
+               
+            </ul>
+        </nav>
+        <div class="clr"></div>
+        <!--end navigation-->
+        <!--start product-->
+        <section id="product">
+            <div id="prd_images">
+            <div class="product_gallery">
+                <!--slider loop-->
+                <div class="pg-cell">
+                    <img data-flickity-lazyload="{{ product.image1.url }}">
+                </div>
+                <div class="pg-cell">
+                    <img data-flickity-lazyload="{{ product.image2.url }}">
+                </div>
+                <!--/end loop-->
+            </div>
+            <!--slider navi-->
+            <div class="product_items">
+                <!--slider loop-->
+                <div class="pi-cell">
+                    <img src="{{ product.image1.url }}">
+                </div>
+                <div class="pi-cell">
+                    <img src="{{ product.image2.url }}">
+                </div>
+                <!--/end loop-->
+            </div>
+            <!--/end slider navi-->
+        </div>
+        <!--product content-->
+        <div id="prd_content">
+            <article>
+                <header>
+                    <h2>{{product.name}}</h2>
+                </header>
+                <div id="cnt">
+                    <p>{{ product.description }}</p>
+                </div>
+                <div id="tags">
+                    <div>برچسب ها :</div>
+                    <ul>
+                        <li><a href="#">فروشگاه</a></li>
+                        <li><a href="#">{{ product.category }}</a></li>
+                        <li><a href="#">{{ product.subcategory }}</a></li>
+                        <li><a href="#">{{ product.name }}</a></li>
+                       
+                    </ul>
+                </div>
+                <div id="sell_box">
+                    <div id="price">
+                        <!--if have offer-->
+                        <div id="offer">50,000</div>
+                        <div id="org">{{ product.price }}<span>تومان</span></div>
+                    </div>
+                    <div id="">
+                        <form id="buy" action="{% url 'cart:cart_add' product.id %}" method="post">
+                            {{ cart_product_form }}
+                            {% csrf_token %}
+                            <input type="submit"  value=" اضافه به سبد خرید">
+                          </form>
+                    </div>
+                </div>
+                
+            </article>
+           
+   
+
+        </div>
+        <!--/end product content-->
+        </section>
+        <div class="clr"></div>
+        <!--/end product-->
+        <!--comments-->
+        <section id="prd_cm">
+            <!--start form-->
+            <h4>دیدگاه شما در مورد این محصول چیست؟</h4>
+            <div id="form_area">
+                <form action="" method="POST">
+                    <textarea id="comment"></textarea>
+                    <input type="submit" value="ارسال">
+                </form>
+            </div>
+            <!--/end form-->
+            <!--start verified comments-->
+            <div id="prv_cm">
+                <h4>سایر دیدگاه ها</h4>
+                <div id="cm">
+                    <!--comment loop-->
+                    <div class="single">
+                        <div class="avatar">
+                            <img src="images/avatar.png" alt="user">
+                        </div>
+                        <div class="details">
+                            <div class="name_date">
+                                <span>حسین</span>
+                                <i>28 دی ماه 1399</i>
+                            </div>
+                            <div class="content">
+                                <p>سلام خیلی عالی بود</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clr"></div>
+                    <!--/end loop-->
+                </div>
+            </div>
+            <!--/end verified comments-->
+        </section>
+        <!--/end comments-->
+        <!--relateds-->
+        <section class="tj_main">
+            <div class="headTitle">
+            <hr style="border-bottom-color: rgb(126, 166, 40)">
+                <h2 style="color: rgb(126, 166, 40)">محصولات مرتبط</h2>
+            </div>
+            <div class="tj_ticket">
+            <!--relate loop-->
+              <div class="tj_single blog">
+                <div class="tj_Img"><img src="images/p.jpg">
+                    <span class="new">موجود</span>
+                    <span class="off">تخفیف</span>
+                </div>
+                <h2>محصول مرتبط</h2>
+                <div class="clr"></div>
+              </div>
+            <!--/end loop-->
+            </div>
+        </section>
+        <!--/end relateds-->
+    </div>
+        <!--footer-->
+        <footer id="footer">
+            <div id="boxes">
+                <!--first-->
+                <div class="box">
+                    <h3>دسترسی سریع</h3>
+                    <div class="content">
+                        <ul>
+                            <li><a href="#">تجهیزات پزشکی</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--second-->
+                <div class="box">
+                    <h3>تاییدیه و مجوزها</h3>
+                    <div class="content">
+                        <img src="images/nam.png" alt="">
+                    </div>
+                </div>
+                <!--third-->
+                <div class="box">
+                    <h3>تماس با ما</h3>
+                    <div class="content">
+                        <p>آدرس : اصفهان - خیابان شیخ بهایی</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clr"></div>
+            <!--copyright-->
+            <p id="copyright">کلیه ی حقوق این وبسایت محفوظ می باشد و هرگونه کپی برداری از آن شرعا و قانونا غیرمجاز است.</p>
+        </footer>
+        <!--whatsapp widget-->
+        <div id="whatsapp_support" class="fa fa-whatsapp">
+                   <a href="https://web.whatsapp.com/send?phone=09131696378&text=سلام"><div id="title">پشتیبانی واتساپ</div>
+            </a>
+        </div>
+    <!--load Scripts-->
+    <script src="{% static 'js/scripts/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/scripts/flickity.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/scripts/scripts.js' %}"></script>
+    <script>
+        //product slider initialize
+        $(document).ready(function(){
+            $('.product_gallery').flickity({
+                cellAlign: 'right',
+                contain: true,
+                prevNextButtons: false,
+                imagesLoaded: true,
+                fullscreen: true,
+                lazyLoad: true
+            });
+
+            //initialize as for slider
+            $('.product_items').flickity({
+                contain: true,
+                imagesLoaded: true,
+                pageDots: false,
+                asNavFor: '.product_gallery'
+            });
+        });
+        //items initialize
+        if($(window).width() >= 600){
+            $('.tj_ticket').flickity({
+            rightToLeft: true,
+            freeScroll: true,
+            contain: true,
+            pageDots: false,
+            freeScrollFriction: 0.2,
+            cellAlign: 'right',
+            imagesLoaded: true
+        });
+        }else{
+            $(".tj_ticket").addClass("toScroll");
+            $(".tj_ticket .tj_single").addClass("toScroller");
+        }
+    </script>
+</body>
+
+</html>

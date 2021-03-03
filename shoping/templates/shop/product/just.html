@@ -1,0 +1,150 @@
+{% load static %}
+{% include 'shop/product/header.html' %}
+    <!--slider-->
+    <div id="contain">
+        <!--start mini slide (small box side slider)-->
+        {% for tak in taki %}
+        <div id="mini_slide">
+             <a href="{{ tak.get_absolute_url }}"><img src="{% if tak.image %}{{tak.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></a>
+        </div>
+        {% endfor %}
+        <!--/end mini slide-->
+        <!--start slider-->
+        <section id="slider">
+            <div class="gallery">
+                <!--slider loop-->
+                {% for app in new_product %}
+                
+              
+                <div class="gallery-cell">
+                   <a href="{{ app.get_absolute_url }}"><img src="{% if app.image %}{{ app.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></a>
+                </div>
+                
+                {% endfor %}
+                
+                <!--/end loop-->
+            </div>
+        </section>
+        <!--/end slider-->
+    </div>
+    <div class="clr"></div>
+    <!--start products category-->
+    
+    <section class="tj_main">
+        <div class="headTitle">
+        <hr style="border-bottom-color: rgb(126, 166, 40)">
+            <h2 style="color: rgb(126, 166, 40)"> لیست محصولات</h2>
+        </div>
+        <div class="tj_ticket">
+        <!--item loop-->
+        
+        {% for product in products %}
+          <div class="tj_single">
+            <div class="tj_Img"><a href="{{ product.get_absolute_url }}"><img src="{% if product.image1 %}{{ product.image1.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></a>
+                <span class="off">%31 تخفیف</span>
+            </div>
+            <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+            <div class="clr"></div>
+            <div class="offers">
+                <div class="off">75,000</div>
+                <div class="org">{{ product.price }}<span>تومان</span></div>
+            </div>
+          </div>
+          {% endfor %}
+        <!--/end loop-->
+        </div>
+        </section>
+        <!--a other product-->
+        <section class="tj_main">
+            <div class="headTitle">
+            <hr style="border-bottom-color: rgb(126, 166, 40)">
+                <h2 style="color: rgb(126, 166, 40)">انواع ماسک</h2>
+            </div>
+            <div class="tj_ticket">
+                {% for pro in advansed %}
+              <div class="tj_single">
+                <div class="tj_Img"><a href="{{ pro.get_absolute_url }}"><img src="{% if pro.image %}{{ pro.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}"></a>
+                    <span class="off">%31 تخفیف</span>
+                </div>
+                <h3>پارک آب و تاب در خیابان شریعتی</h3>
+                <div class="clr"></div>
+                <div class="offers">
+                    <div class="off">75,000</div>
+                    <div class="org">{{ product.price }}<span>تومان</span></div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+        </section>
+        <!--start 2 products-->
+        <section class="two_pro">
+            <!--start first-->
+            <div class="pro">
+               <img src="{% static 'images/product_1.jpg' %}"  >
+            </div>
+            <!--/end first-->
+            <!--start second-->
+            <div class="pro">
+                <img src="{% static 'images/product_2.jpg' %}">
+            </div>
+            <div class="pro">
+                <img src="{% static 'images/product_4.jpg' %}">
+            </div>
+            <!--/end second-->
+        </section>
+        <!--end 2 products-->
+        <!--a other product (like top box)-->
+        <section class="tj_main">
+            <div class="headTitle">
+            <hr style="border-bottom-color: rgb(126, 166, 40)">
+                <h2 style="color: rgb(126, 166, 40)">تجهیزات پزشکی</h2>
+            </div>
+            <div class="tj_ticket">
+              <div class="tj_single">
+                <div class="tj_Img"><img src="{% static 'images/p.jpg' %}">
+                    <span class="off">%31 تخفیف</span>
+                </div>
+                <h3>پارک آب و تاب در خیابان شریعتی</h3>
+                <div class="clr"></div>
+                <div class="offers">
+                    <div class="off">75,000</div>
+                    <div class="org">50,000<span>تومان</span></div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <!--start brands-->
+        
+        <section class="tj_main">
+            <div class="headTitle">
+            <hr style="border-bottom-color: rgb(126, 166, 40)">
+                <h2 style="color: rgb(126, 166, 40)">برندها</h2>
+            </div>
+            <div class="tj_ticket brands">
+            <!--brand loop-->
+              <div class="tj_single">
+                <div class="tj_Img"><img src="{% static 'images/b1.jpg' %}">
+                </div>
+              </div>
+            <!--/end loop-->
+            </div>
+        </section>
+        <!--/end brands-->
+        <!--start blog-->
+        <section class="tj_main">
+            <div class="headTitle">
+            <hr style="border-bottom-color: rgb(126, 166, 40)">
+                <h2 style="color: rgb(126, 166, 40)">مقالات وبلاگ</h2>
+            </div>
+            <div class="tj_ticket">
+              <div class="tj_single blog">
+                <div class="tj_Img"><img src="{% static 'images/p.jpg' %}">
+                    <span class="new">دسته بندی</span>
+                </div>
+                <h2>تایتل مطلب بلاگ</h2>
+                <div class="clr"></div>
+              </div>
+            </div>
+        </section>
+        <!--/end blog-->
+{% include 'shop/product/footer.html' %}

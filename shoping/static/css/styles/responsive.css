@@ -1,0 +1,317 @@
+/*
+start responsive
+*/
+
+@media screen and (max-width: 1150px){
+    #header #contact_info #center h1{
+        font-size: 25px;
+    }
+
+    #header #second_row #search_box #input input[type='text']{
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    #header{
+        margin-top: 60px;
+    }
+
+    #header #top_navi{
+        background: #409e03;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        margin-top: 0;
+        z-index: 3;
+        height: 60px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    }
+
+    #header #top_navi #mnu-btn{
+        display: block;
+    }
+
+    #header #top_navi ul{
+        position: fixed;
+        width: 40%;
+        height: 100%;
+        top: 0;
+        right: -40%;
+        z-index: 3;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+        overflow-y : auto;
+        display: none;
+    }
+
+    #header #top_navi ul li{
+        float: unset;
+        width: 100%;
+        font-weight: normal;
+        border-bottom: 1px solid #eee;
+    }
+
+    #header #top_navi ul li a{
+        padding-right: 20px;
+    }
+
+    #header #top_navi ul li:hover > ul{
+        display: none;
+    }
+
+    #header #top_navi ul li ul{
+        position: unset;
+        width: 100%;
+        min-height: auto;
+        box-shadow: none;
+        background: #eee;
+        border-radius: 0;
+        margin-top: 0;
+    }
+
+    #header #top_navi ul li ul li{
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    #header #top_navi ul li ul li:last-child{
+        border-bottom: 0 none;
+    }
+
+    #header #top_navi ul li.have-child:after{
+        content: "\f104";
+        font: normal normal normal 17px/1 FontAwesome;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+    }
+
+    #header #top_navi ul li ul li ul{
+        background: #e4e4e4;
+    }
+
+    .gallery-cell, #mini_slide, .gallery{
+        height: 240px;
+    }
+
+    #prd_images, #prd_content{
+        width: 100%;
+        float: unset;
+        overflow: hidden;
+    }
+
+    #grids .grid{
+        width: 23%;
+    }
+}
+
+@media screen and (max-width: 880px){
+    #header #contact_info #center h1 {
+        font-size: 20px;
+    }
+
+    .gallery-cell, #mini_slide, .gallery{
+        height: 220px;
+    }
+
+    .tj_ticket .offers .off {
+        font-size: 16px;
+    }
+
+    .tj_ticket .offers .org{
+        font-size: 18px;
+    }
+
+    #prd_content #sell_box #buy{
+        font-size: 24px;
+    }
+
+    #prd_content #sell_box #buy, #prd_content #sell_box #price{
+        height: 65px;
+    }
+
+    #prd_content #sell_box #price #offer{
+        font-size: 20px;
+    }
+
+    #prd_content #sell_box #price #org{
+        font-size: 23px;
+    }
+
+    #grids .grid{
+        width: 31%;
+    }
+}
+
+@media screen and (max-width: 780px){
+    #header #second_row #search_box{
+        width: 96%;
+        float: unset;
+    }
+
+    #header #second_row #details{
+        width: 100%;
+        float: unset;
+    }
+
+    .go-center-h1{
+        left: unset;
+        right: 0;
+    }
+
+    #footer #boxes .box{
+        width: 48%;
+        margin: 1% 1%;
+    }
+}
+
+@media screen and (max-width: 740px){
+    .gallery-cell, #mini_slide, .gallery{
+        height: 190px;
+    }
+
+    .two_pro .pro{
+        width: 98%;
+        display: block;
+        margin: 1%;
+    }
+}
+
+@media screen and (max-width: 720px){
+    #header #contact_info #left{
+        position: fixed;
+        float: unset;
+        left: 15px;
+        top: 15px;
+        z-index: 4;
+        width: auto;
+    }
+
+    #header #contact_info #left a span{
+        background: #fafafa;
+        color: #409e03;
+    }
+
+    #header #contact_info #center{
+        width: 50%;
+        float: right;
+        margin-top: 5px;
+    }
+
+    #header #contact_info #center h1{
+        text-align: right;
+    }
+
+    #header #contact_info #right, #header #contact_info #right ul li{
+        float: left;
+    }
+
+    #header #contact_info #right{
+        width: 50%;
+    }
+
+    #prd_cm #cm .single .details{
+        width: 77%;
+        float: left;
+    }
+}
+
+
+@media screen and (max-width: 590px){
+    /* .gallery-cell, #mini_slide, .gallery {
+        height: 160px;
+    } */
+
+    #mini_slide{
+        width: 100%;
+        height: auto;
+        float: unset;
+    }
+
+    #slider{
+        width: 100%;
+        float: unset;
+        margin-top: 15px;
+    }
+
+    #prd_content #sell_box #buy{
+        font-size: 19px;
+        line-height: 3;
+    }
+
+    #prd_content #sell_box #price #offer {
+        font-size: 18px;
+    }
+
+    #prd_content #sell_box #price #org {
+        font-size: 20px;
+    }
+
+    #prd_content #sell_box #buy, #prd_content #sell_box #price {
+        height: 60px;
+    }
+
+    #prd_cm #cm .single .avatar img{
+        width: 100%;
+        height: auto;
+    }
+
+    #grids .grid{
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 540px){
+    #header #contact_info #center h1 {
+        font-size: 17px;
+    }
+
+    #footer #boxes .box{
+        width: 98%;
+        float: unset;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    #whatsapp_support{
+        width: 50px;
+        height: 50px;
+        font-size: 32px;
+        transform: rotate(0);
+    }
+
+    #whatsapp_support #title{
+        right: 42px;
+        width: 100px;
+        font-size: 12px;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 510px){
+    .gallery-cell, .gallery{
+        height: 170px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    #header #contact_info #center, #header #contact_info #right{
+        float: unset;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #header #top_navi ul{
+        width: 50%;
+    }
+
+    .gallery-cell, .gallery{
+        height: 150px;
+    }
+
+    #grids .grid{
+        width: 98%;
+    }
+}
